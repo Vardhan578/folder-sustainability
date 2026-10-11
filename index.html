@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, smart study planner to organize tasks, track study time, and stay productive.">
+  <title>Smart Study Planner</title>
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="planner-wrapper">
+    <!-- Header Section -->
+    <header class="planner-header">
+      <div class="header-badge">
+        <span class="badge-icon">📖</span> Study Smart, Stress Less
+      </div>
+      <h1 class="main-heading">My Smart Study Planner</h1>
+      <p class="subtitle">Plan your study sessions, track your progress, and crush your academic goals!</p>
+    </header>
+
+    <!-- Statistics Overview Cards -->
+    <section class="stats-container" aria-label="Study Progress Summary">
+      <div class="stat-card">
+        <div class="stat-icon total-icon">📋</div>
+        <div class="stat-info">
+          <span class="stat-value" id="totalTasks">0</span>
+          <span class="stat-label">Total Tasks</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon completed-icon">✅</div>
+        <div class="stat-info">
+          <span class="stat-value" id="completedTasks">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon remaining-icon">⏳</div>
+        <div class="stat-info">
+          <span class="stat-value" id="remainingTasks">0</span>
+          <span class="stat-label">Remaining</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add Task Card -->
+    <main>
+      <section class="card input-card">
+        <h2 class="card-title">Add a New Study Task</h2>
+        <form id="taskForm" class="task-form" novalidate>
+          <div class="form-row">
+            <div class="form-group task-input-group">
+              <label for="taskInput">Subject or Study Topic</label>
+              <input 
+                type="text" 
+                id="taskInput" 
+                name="taskInput" 
+                placeholder="e.g., Mathematics - Calculus Practice" 
+                autocomplete="off"
+                required
+              >
+            </div>
+
+            <div class="form-group time-input-group">
+              <label for="timeInput">Time (Minutes)</label>
+              <input 
+                type="number" 
+                id="timeInput" 
+                name="timeInput" 
+                placeholder="e.g., 45" 
+                min="1" 
+                max="1440"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Error Alert Message -->
+          <div id="formError" class="form-error hidden" role="alert">
+            <span class="error-icon">⚠️</span>
+            <span id="errorMessage">Please provide a valid task and positive study time.</span>
+          </div>
+
+          <button type="submit" id="addTaskBtn" class="primary-btn">
+            <span class="btn-icon">➕</span> Add Task
+          </button>
+        </form>
+      </section>
+
+      <!-- Task List Card -->
+      <section class="card list-card">
+        <div class="list-header">
+          <h2 class="card-title">Your Study Schedule</h2>
+          <span class="task-counter-pill" id="listBadge">0 tasks listed</span>
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">📚✨</div>
+          <h3>No study tasks yet!</h3>
+          <p>Add a subject and your estimated study time above to start building your study routine.</p>
+        </div>
+
+        <!-- Dynamic Task List -->
+        <ul id="taskList" class="task-list" aria-live="polite">
+          <!-- Tasks injected via JavaScript -->
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="planner-footer">
+      <p>💡 Tip: Break your study sessions into 25-50 minute intervals with short breaks for best retention.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
